@@ -35,8 +35,8 @@ namespace AreaSearch.Test
 
 	private bool areIdentical(List<DataPoint> actualResults, List<DataPoint> expectedResults) {
 		return   actualResults.Count == expectedResults.Count
-				&& actualResults.Intersect(expectedResults).Count() == actualResults.Count
-				&& expectedResults.Intersect(actualResults).Count() == expectedResults.Count;
+				&& actualResults.All(expectedResults.Contains)
+				&& expectedResults.All(actualResults.Contains);
 	}
 
 	private class PointCollector : PointConsumer {
